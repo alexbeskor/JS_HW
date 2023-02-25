@@ -8,10 +8,10 @@ const resultDivison = firstNumber / secondNumber;
 
 let isAllOk;
 
-if (secondNumber === 0) {
-    alert('Error: Second number is 0');
-} else if ((firstNumber === '' || firstNumber === null) || (secondNumber === '' || secondNumber === null)) {
+if (firstNumber === '' || secondNumber === '') {
     alert('Error: One of fields is empty');    
+} else if (secondNumber == 0) {
+    alert('Error: Second number is 0');    
 } else if (firstNumber < secondNumber) {
     isAllOk = confirm('Are you sure you want to continue calculation?');
     if (isAllOk === true) {
@@ -29,3 +29,7 @@ if (secondNumber === 0) {
 }
 
 // alert(`Your result is Summ - ${resultSumm}, Difference - ${resultDifference}, Multiply - ${resultMultiply}, Divide - ${resultDivison}`);
+
+// } else if ((firstNumber === '' || firstNumber === null) || (secondNumber === '' || secondNumber === null)) {
+//     alert('Error: One of fields is empty');    
+// }
