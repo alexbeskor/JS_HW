@@ -1,61 +1,95 @@
+// -------------------------- LESSON - 26 ------------------------------------
+// 1. Створити конструктор Accumulator. Даний конструктор має приймати число, яке буде початковим значенням. Клас має реалізувати методи increment, при виклику якого передане значення має збільшуватись на 1, та decrement, при виклиці якого значення має зменшуватись.
+
+function Accumulator(beginVal) {
+    this.val = beginVal;
+    
+    this.increment = function() {
+      this.val++;
+    };
+    
+    this.decrement = function() {
+      this.val--;
+    };
+  }
+
+  
+// 2. Створити конструктор CancelableAccumulator, який буде наслідувати Accumulator та додатково буде реалізовувати метод clear, при виклику якого значення збереженого числа має стати таким, яким його передали в конструкторі.
+
+function CancelableAccumulator(beginVal) {
+    Accumulator.call(this, beginVal);
+    
+    this.originalVal = beginVal;
+    
+    this.clear = function() {
+      this.val = this.originalVal;
+    };
+  }
+  
+  
+  CancelableAccumulator.prototype = Object.create(Accumulator.prototype);
+  CancelableAccumulator.prototype.constructor = CancelableAccumulator;
+  
+
+
+
 // -------------------------- LESSON - 25 ------------------------------------
 
 // 1. Напишіть функцію, яка буде перевіряти обʼєкт на пустоту
 
-function isEmptyObj(obj) {
-    for(var key in obj) {
-      if(obj.hasOwnProperty(key))
-        return false;
-    }
-    return true;
-  }
+// function isEmptyObj(obj) {
+//     for(var key in obj) {
+//       if(obj.hasOwnProperty(key))
+//         return false;
+//     }
+//     return true;
+//   }
 
 // Перевірка:
-console.log("Перевірка 1го завдання");  
-var obj = 14;
-let isEmpty = isEmptyObj(obj);
-console.log(isEmpty);
+// console.log("Перевірка 1го завдання");  
+// var obj = 14;
+// let isEmpty = isEmptyObj(obj);
+// console.log(isEmpty);
   
 // 2. Опишіть обʼєкт user з полями name, age та методом sayHello, результатом виклику якого має бути повідомлення “Привіт, я name, мені age років”
 
-var user = {
-    name: "Олексій",
-    age: 37,
-    sayHello: function() {
-      console.log("Привіт, я " + this.name + ", мені " + this.age + " років.");
-    }
-  };
+// var user = {
+//     name: "Олексій",
+//     age: 37,
+//     sayHello: function() {
+//       console.log("Привіт, я " + this.name + ", мені " + this.age + " років.");
+//     }
+//   };
 
-// Перевірка:
-console.log("Перевірка 2го завдання"); 
-user.sayHello();
+// // Перевірка:
+// console.log("Перевірка 2го завдання"); 
+// user.sayHello();
 
   
 // 3. Напишіть обʼєкт калькулятор. Він має містити метод ask, sum та mul. При виклику методу ask обʼєкт має запросити 2 числа та зберегти їх, як свої властивості. При виклику sum - вивести суму збережених чисел, при виклику mul - додаток чисел.
 
-var calculator = {
-    num1: null,
-    num2: null,
-    ask: function() {
-      this.num1 = +prompt("Введіть перше число:", "");
-      this.num2 = +prompt("Введіть друге число:", "");
-    },
-    sum: function() {
-      return this.num1 + this.num2;
-    },
-    mul: function() {
-      return this.num1 * this.num2;
-    }
-  }; 
+// var calculator = {
+//     num1: null,
+//     num2: null,
+//     ask: function() {
+//       this.num1 = +prompt("Введіть перше число:", "");
+//       this.num2 = +prompt("Введіть друге число:", "");
+//     },
+//     sum: function() {
+//       return this.num1 + this.num2;
+//     },
+//     mul: function() {
+//       return this.num1 * this.num2;
+//     }
+//   }; 
 
-// Перевірка:
-calculator.ask();
-var sum = calculator.sum();
-var mul = calculator.mul();
-console.log("Перевірка 3го завдання"); 
-console.log(sum);
-console.log(mul);
-
+// // Перевірка:
+// calculator.ask();
+// var sum = calculator.sum();
+// var mul = calculator.mul();
+// console.log("Перевірка 3го завдання"); 
+// console.log(sum);
+// console.log(mul);
  
 
 
