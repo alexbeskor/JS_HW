@@ -1,34 +1,169 @@
+// -------------------------- LESSON - 27 ------------------------------------
+// 1. Модифікувати функції так, щоб результат дії цих функцій показувався на сторінці замість діалогового вікна.
+// 2. Якщо результат операції з завдання 1 буде відʼємним – показувати його червоним кольором, якщо додатнім – зеленим.
+
+function getInputValue(id) {
+	var input = document.getElementById(id);
+	return input.value.trim() === '' ? NaN : Number(input.value);
+}
+
+function setResult(result) {
+	document.getElementById('result').innerHTML = result;
+}
+
+function setColor(color) {
+	document.getElementById('result').style.color = color;
+}
+
+function addition() {
+	var a = getInputValue('a');
+	var b = getInputValue('b');
+	if (isNaN(a) || isNaN(b)) {
+		setResult('Параметри повинні бути числами!');
+	} else {
+		var result = a + b;
+		setResult(result);
+		if (result < 0) {
+			setColor('red');
+		} else {
+			setColor('green');
+		}
+	}
+}
+
+function subtraction() {
+	var a = getInputValue('a');
+	var b = getInputValue('b');
+	if (isNaN(a) || isNaN(b)) {
+		setResult('Параметри повинні бути числами!');
+	} else {
+		var result = a - b;
+		setResult(result);
+		if (result < 0) {
+			setColor('red');
+		} else {
+			setColor('green');
+		}
+	}
+}
+
+function multiplication() {
+	var a = getInputValue('a');
+	var b = getInputValue('b');
+	if (isNaN(a) || isNaN(b)) {
+		setResult('Параметри повинні бути числами!');
+	} else {
+		var result = a * b;
+		setResult(result);
+		if (result < 0) {
+			setColor('red');
+		} else {
+			setColor('green');
+		}
+	}
+}
+
+function division() {
+	var a = getInputValue('a');
+	var b = getInputValue('b');
+	if (isNaN(a) || isNaN(b)) {
+		setResult('Параметри повинні бути числами!');
+	} else if (b === 0) {
+		setResult('Ділення на нуль неможливе');
+	} else {
+		var result = a / b;
+		setResult(result);
+		if (result < 0) {
+			setColor('red');
+		} else {
+			setColor('green');
+		}
+	}
+}
+
+
+// 2. Зробити функції для пошуку мінімального і максимального числа в масиві. Масив має бути аргументом функції. Для пошуку мінімального та максимального чисел використовуйте різні цикли.
+
+// findMin function
+function findMin(array) {
+  let min = array[0];
+  for (let i = 1; i < array.length; i++) {
+      if (array[i] < min) {
+          min = array[i];
+      }
+  }
+  let colorValue = Math.round((min/array.length)*255); 
+  let color = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
+  let resultDiv = document.querySelector('#result2');
+    resultDiv.style.color = color; 
+    resultDiv.textContent = `Мінімальне значення ${min}`; 
+}
+
+// findMax function
+function findMax(array) {
+  let max = array[0];
+  let i = 1;
+  while (i < array.length) {
+      if (array[i] > max) {
+          max = array[i];
+      }
+      i++;
+  }
+  let colorValue = Math.round((max/array.length)*255); 
+  let color = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;   
+  let resultDiv = document.querySelector('#result2');
+    resultDiv.style.color = color; 
+    resultDiv.textContent = `Максимальне значення ${max}`; 
+}
+
+// form and buttons
+const form = document.querySelector('form');
+const findMinButton = document.querySelector('#findMinButton');
+const findMaxButton = document.querySelector('#findMaxButton');
+
+// Add event listeners to the buttons
+findMinButton.addEventListener('click', () => {
+  const numbers = form.numbers.value.split(',').map(Number); 
+  findMin(numbers);
+});
+
+findMaxButton.addEventListener('click', () => {
+  const numbers = form.numbers.value.split(',').map(Number); 
+  findMax(numbers);
+});
+
+
 // -------------------------- LESSON - 26 ------------------------------------
 // 1. Створити конструктор Accumulator. Даний конструктор має приймати число, яке буде початковим значенням. Клас має реалізувати методи increment, при виклику якого передане значення має збільшуватись на 1, та decrement, при виклиці якого значення має зменшуватись.
 
-function Accumulator(beginVal) {
-    this.val = beginVal;
+// function Accumulator(beginVal) {
+//     this.val = beginVal;
     
-    this.increment = function() {
-      this.val++;
-    };
+//     this.increment = function() {
+//       this.val++;
+//     };
     
-    this.decrement = function() {
-      this.val--;
-    };
-  }
+//     this.decrement = function() {
+//       this.val--;
+//     };
+//   }
 
   
 // 2. Створити конструктор CancelableAccumulator, який буде наслідувати Accumulator та додатково буде реалізовувати метод clear, при виклику якого значення збереженого числа має стати таким, яким його передали в конструкторі.
 
-function CancelableAccumulator(beginVal) {
-    Accumulator.call(this, beginVal);
+// function CancelableAccumulator(beginVal) {
+//     Accumulator.call(this, beginVal);
     
-    this.originalVal = beginVal;
+//     this.originalVal = beginVal;
     
-    this.clear = function() {
-      this.val = this.originalVal;
-    };
-  }
+//     this.clear = function() {
+//       this.val = this.originalVal;
+//     };
+//   }
   
   
-  CancelableAccumulator.prototype = Object.create(Accumulator.prototype);
-  CancelableAccumulator.prototype.constructor = CancelableAccumulator;
+//   CancelableAccumulator.prototype = Object.create(Accumulator.prototype);
+//   CancelableAccumulator.prototype.constructor = CancelableAccumulator;
   
 
 
