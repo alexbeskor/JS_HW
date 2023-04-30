@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: #c2d69a; /* Світло-зелений колір */
+        }
+    </style>
     <title>Document</title>    
 </head>
 <body>
+
+    <!-- Завдання 1-2 -->
+
+    <h2>Калькулятор</h2>
+    
+    <label for="a">Введіть перше число:</label>
+	<input type="text" id="a" name="a">
+	<br><br>
+	<label for="b">Введіть друге число:</label>
+	<input type="text" id="b" name="b">
+	<br><br>
+	<button onclick="addition()">Додавання</button>
+	<button onclick="subtraction()">Віднімання</button>
+	<button onclick="multiplication()">Множення</button>
+	<button onclick="division()">Ділення</button>
+	<br><br>
+	<p id="result"></p>
+    <br><br>
+
+
+    <!-- Завдання 3 -->
+
+    <h2>Знайти мінімальне чи максимальне значення</h2>
+    <form>
+        <label for="numbers">Введіть числа через кому:</label><br>
+        <input type="text" id="numbers" name="numbers"><br><br>
+        <button type="button" id="findMinButton">Знайти Мін</button>
+        <button type="button" id="findMaxButton">Знайти Макс</button>
+    </form>
+
+    <div id="result2"></div>
 
     <script src="./script.js"></script>
     
