@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Prototypes</title>
+    
+  </head>
+  <body>
+
+
+    <script type="text/javascript">
+        // Завдання 1
+        Array.prototype.pow = function(n) {
+          return this.map(function(x) {
+            return Math.pow(x, n);
+          });
+        }
+  
+        // Завдання 2
+        Function.prototype.defer = function(n) {
+          var fn = this;
+          setTimeout(function() {
+            fn();
+          }, n);
+        }
+  
+        // Приклади використання
+        function a() { alert("test"); }
+        a.defer(3000); // виведе "test" через 1 секунду
+  
+        var arr = [1, 2, 3];
+        console.log(arr.pow(2)); // [1, 4, 9]
+      </script>
+
+  </body>
+</html>
